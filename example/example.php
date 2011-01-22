@@ -5,7 +5,7 @@
  * @author Gerard van Helden <drm@melp.nl>
  */
 
-require_once 'Spritzer.php';
+require_once dirname(__FILE__) . '/../lib/Spritzer.php';
 $parser = new Spritzer_Parser('example.sprite');
 $config = $parser->parse();
 $config->image()->writeTo('./example.png');
