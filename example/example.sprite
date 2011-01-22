@@ -1,0 +1,17 @@
+# Spritzer example sprite file
+
+# tilesize of the table is 32 x 32
+@tile 32x32
+
+# each letter in the table represents an image
+@table
+a     b      
+   c
+
+
+# map letters to images and CSS selectors.
+@images
+a = warning.png:    .warning
+b = geek.png:       .geek
+c = facebook.png:   .facebook
+
