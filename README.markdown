@@ -8,17 +8,17 @@ PNG file based on this layout. Spritzer also generates CSS `background` rules fo
 * `@tile` defines the tile size for the table layout in the format `wxh` or `w,h`
 * `@table` defines the table layout, indicating each character mapping to an image and CSS selector in the @images directive:
 
-    a
-    b
-                c
-                d
-                e
+        a
+        b
+                    c
+                    d
+                    e
 
 The resulting image size is dependent on the needed number of columns and rows defined in the table, and the tile size.
 
 * `@images` defines each of the images and CSS selectors, in the following format:
 
-    a = image-url.jpg: css-selector
+        a = image-url.jpg: css-selector
 
 ## Usage: ##
 
