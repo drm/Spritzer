@@ -10,6 +10,9 @@ class Spritzer_Config
     public $images = array();
     public $table = array();
     public $imageDir = './';
+    public $tile = array(16, 16);
+
+    protected $render = array();
 
 
     function setDirective($directive, $value)
@@ -57,7 +60,8 @@ class Spritzer_Config
     }
 
 
-    function setImageDir($dirName) {
+    function setImageDir($dirName)
+    {
         $this->imageDir = rtrim($dirName, '/') . '/';
     }
 
@@ -70,7 +74,6 @@ class Spritzer_Config
                     $this->render[$i][$j] = null;
                 } elseif (array_key_exists($value, $this->images)) {
                     $this->render[$i][$j] = $this->images[$value];
-                    $this->reverse[$value] = array($i, $j);
                 }
             }
         }
