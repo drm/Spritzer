@@ -9,6 +9,8 @@ a     b
    c
 
 
+@imageDir images
+
 # map letters to images and CSS selectors.
 @images
 a = warning.png:    .warning
