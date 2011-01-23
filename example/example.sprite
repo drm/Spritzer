@@ -5,9 +5,8 @@
 
 # each letter in the table represents an image
 @table
-a     b      
+a     b
    c
-
 
 @imageDir images
 
