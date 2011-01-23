@@ -38,12 +38,12 @@ class Spritzer_Parser
                     $ret->setDirective($directive, $value);
                     $value = '';
                 }
-                $lineNr = 1;
+                $j = 1;
                 $directive = '';
-                while (ctype_alnum($line{$lineNr})) {
-                    $directive .= $line{$lineNr++};
+                while (ctype_alnum($line{$j})) {
+                    $directive .= $line{$j++};
                 }
-                $remainder = trim(substr($line, $lineNr));
+                $remainder = trim(substr($line, $j));
                 if ($remainder) {
                     $ret->setDirective($directive, $remainder);
                     $directive = null;
