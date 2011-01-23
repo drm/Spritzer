@@ -21,6 +21,7 @@ class Spritzer_Parser
     function parse()
     {
         $ret = new Spritzer_Config();
+        $ret->setImageDir(dirname($this->_fileName));
         $value = '';
         $directive = null;
         $skipWhite = true;

@@ -9,6 +9,7 @@ class Spritzer_Config
     public $height = 0;
     public $images = array();
     public $table = array();
+    public $imageDir = './';
 
 
     function setDirective($directive, $value)
@@ -56,6 +57,11 @@ class Spritzer_Config
     }
 
 
+    function setImageDir($dirName) {
+        $this->imageDir = rtrim($dirName, '/') . '/';
+    }
+
+
     function render()
     {
         foreach ($this->table as $i => $row) {
@@ -96,7 +102,7 @@ class Spritzer_Config
         foreach ($this->render as $i => $row) {
             foreach ($row as $j => $value) {
                 if (!is_null($value)) {
-                    $image->setTile($j, $i, $value[0]);
+                    $image->setTile($j, $i, $this->imageDir . $value[0]);
                 }
             }
         }
