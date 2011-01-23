@@ -24,7 +24,7 @@ class Spritzer_Parser
         $value = '';
         $directive = null;
         $skipWhite = true;
-        foreach (file($this->_fileName) as $i => $line) {
+        foreach (file($this->_fileName) as $lineNr => $line) {
             if ($line{0} == '#') {
                 continue;
             }
@@ -37,12 +37,12 @@ class Spritzer_Parser
                     $ret->setDirective($directive, $value);
                     $value = '';
                 }
-                $i = 1;
+                $lineNr = 1;
                 $directive = '';
-                while (ctype_alnum($line{$i})) {
-                    $directive .= $line{$i++};
+                while (ctype_alnum($line{$lineNr})) {
+                    $directive .= $line{$lineNr++};
                 }
-                $remainder = trim(substr($line, $i));
+                $remainder = trim(substr($line, $lineNr));
                 if ($remainder) {
                     $ret->setDirective($directive, $remainder);
                     $directive = null;
@@ -53,7 +53,7 @@ class Spritzer_Parser
                 }
             } else {
                 if (is_null($directive)) {
-                    throw new Spritzer_ParserError("Unexpected value " . $line, $i);
+                    throw new Spritzer_ParserError("Unexpected value " . $line, $lineNr);
                 } else {
                     $value .= $line;
                 }
