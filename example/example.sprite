@@ -1,5 +1,8 @@
 # Spritzer example sprite file
 
+# Directory to look for images.
+@imageDir images
+
 # tilesize of the table is 32 x 32
 @tile 32x32
 
@@ -8,11 +11,8 @@
 a     b
    c
 
-@imageDir images
-
 # map letters to images and CSS selectors.
 @images
 a = warning.png:    .warning
 b = geek.png:       .geek
 c = facebook.png:   .facebook
-
