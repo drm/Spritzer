@@ -12,8 +12,7 @@ class Spritzer_Css implements Spritzer_Css_Interface
     protected $imageUrl = null;
     protected $template = null;
 
-    function __construct($template = self::SHORTHAND_TEMPLATE)
-    {
+    function __construct($template = self::SHORTHAND_TEMPLATE) {
         $this->template = $template;
     }
 
@@ -42,20 +41,20 @@ class Spritzer_Css implements Spritzer_Css_Interface
         $css = '';
         foreach ($this->selectors as $selector => $position) {
             $css .= sprintf(
-                        $this->template,
-                        $selector,
-                        $this->imageUrl,
-                        $this->_unit($position[1]),
-                        $this->_unit($position[0])
-                    ) . "\n";
+                $this->template,
+                $selector,
+                $this->imageUrl,
+                $this->_unit($position[1]),
+                $this->_unit($position[0])
+            ) . "\n";
         }
         return $css;
     }
 
 
-    private function _unit($s)
-    {
-        if ($s == 0) {
+
+    private function _unit($s) {
+        if($s == 0) {
             return $s;
         }
         return $s . 'px';
