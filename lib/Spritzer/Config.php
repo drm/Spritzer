@@ -138,6 +138,7 @@ class Spritzer_Config
     {
         $table = array();
         foreach (explode("\n", $str) as $y => $row) {
+            $table[$y] = array();
             for ($x = 0; $x < strlen($row); $x++) {
                 $table[$y][$x] = $row{$x};
             }
