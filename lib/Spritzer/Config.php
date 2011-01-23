@@ -133,7 +133,7 @@ class Spritzer_Config
             if (!preg_match('/^(?P<name>.)\s*=\s*(?P<value>.*)$/', $row, $m)) {
                 throw new InvalidArgumentException("Invalid value row \"$row\"");
             } else {
-                $values[$m['name']] = array_map('trim', explode(':', $m['value']));
+                $values[$m['name']] = array_map('trim', explode(':', $m['value'], 2));
             }
         }
         return $values;

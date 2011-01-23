@@ -13,6 +13,6 @@ a     b
 
 # map letters to images and CSS selectors.
 @images
-a = warning.png:    .warning
-b = geek.png:       .geek
-c = facebook.png:   .facebook
+a = warning.png:    .warning,  .geek:hover
+b = geek.png:       .geek,     .facebook:hover
+c = facebook.png:   .facebook, .warning:hover
