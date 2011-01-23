@@ -27,12 +27,15 @@ class Spritzer_Parser
         $value = '';
         $directive = null;
         $skipWhite = true;
-        foreach (file($this->_fileName) as $lineNr => $line) {
+        foreach ($this->readLines() as $lineNr => $line) {
             if ($line{0} == '#') {
                 continue;
             }
             if ($skipWhite && strlen(trim($line)) == 0) {
                 continue;
+            }
+            if(substr($line, -1) != "\n") {
+                $line .= "\n";
             }
             $line = preg_replace('/\r\n/', "\n", $line);
             if ($line{0} == '@') {
@@ -69,6 +72,12 @@ class Spritzer_Parser
     }
 
 
+    protected function readLines()
+    {
+        return file($this->_fileName);
+    }
+
+
     private function _value($directive, $value)
     {
         $methodName = '_parse' . ucfirst($directive);
@@ -97,12 +106,22 @@ class Spritzer_Parser
     private function _parseTable($str)
     {
         $table = array();
-        foreach (explode("\n", rtrim($str)) as $y => $row) {
+        foreach (explode("\n", trim($str, "\n")) as $y => $row) {
             $table[$y] = array();
             for ($x = 0; $x < strlen($row); $x++) {
                 $table[$y][$x] = $row{$x};
             }
         }
         return $table;
+    }
+
+
+    private function _parseTile($str)
+    {
+        $tile = array_values(array_filter(array_map(create_function('$s', 'return (int)$s;'), preg_split('/\D+/', $str))));
+        if(count($tile) == 1) {
+            $tile[]= $tile[0];
+        }
+        return $tile;
     }
 }

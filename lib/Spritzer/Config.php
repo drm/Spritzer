@@ -36,9 +36,6 @@ class Spritzer_Config implements Spritzer_Config_Interface
 
     function setTile($size)
     {
-        if (is_string($size)) {
-            return $this->setTile(array_map('trim', preg_split('/[x,]/', $size)));
-        }
         if (!is_array($size) || count($size) != 2) {
             throw new InvalidArgumentException('Expected array of length 2');
         }
